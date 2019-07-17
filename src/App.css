@@ -1,33 +1,167 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background-image: linear-gradient(45deg, rgb(138, 58, 185), rgb(233, 89, 80), rgb(188, 42, 141), rgb(252, 204, 99), rgb(205, 72, 107));
+}
+
 .App {
-  text-align: center;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.App-wallet {
+    max-width: 764px;
+    margin: 0px auto;
+    text-align: left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App-wallet-accountDisplay {
+    padding-top: 15px;
+    display: block;
+    width: 100%;
+    opacity: 1;
+    height: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+.App-wallet-body {
+    margin-top: 15px;
+    border-radius: 10px;
+    background-color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-wallet-body-balanceDisplay {
+    padding-top: 30px;
+    display: block;
+    overflow: auto;
+    height: 40px;
+}
+
+.App-qr {
+    opacity: 1;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.App-inner-qr {
+    position: relative;
+    background-image: linear-gradient(45deg, rgb(138, 58, 185),rgb(188, 42, 141), rgb(205, 72, 107));
+    background-color: rgb(205, 72, 107);
+    border-radius: 50%;
+    width: 89px;
+    height: 89px;
+    box-shadow: rgb(0, 0, 0) 0.5px 0.5px 5px;
+}
+
+.App-inner-qr-url {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 30px;
+    top: 28px;
+}
+
+.App-inner-qr-image{
+    width: 30px;
+    height: 30px;
+}
+
+.balance-row {
+}
+
+.border-line {
+    width: 95%;
+    text-align: center;
+}
+
+#balance {
+    margin-right: 40px;
+    float: right;
+    font-size: 30px;
+}
+
+#accountImage {
+    margin-left: 10px;
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+    float: left;
+}
+
+#accountName {
+    color: white;
+    font-size: 18px;
+    padding-top: 15px;
+
+    vertical-align: center;
+}
+
+.grid-half {
+    width: 50%;
+    display: inline-block;
+}
+
+.grid-row {
+    text-align: center;
+    width: 90%;
+    margin: auto;
+
+}
+
+.colored-button {
+    font-size: 17px;
+    border-radius: 5px;
+    background-color: rgb(188, 42, 141);
+    color: white;
+    height: 35px;
+    opacity: 0.8;
+    box-shadow: 2px 2px 4px #999999;
+
+}
+
+.bordered_button {
+    font-size: 17px;
+    border-radius: 5px;
+    border-color: rgb(188, 42, 141);
+    color: rgb(188, 42, 141);
+    height: 35px;
+    margin-top: 5px;
+    box-shadow: 2px 2px 4px #999999;
+}
+
+#sendButton {
+    width: 98%;
+}
+
+#receiveButton {
+    width: 98%;
+}
+
+#linkButton {
+    width: 98%;
+}
+
+#shareButton {
+    width: 98%;
+}
+
+#requestButton {
+    width: 99%;
+    font-size: 18px;
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 5px;
+    border-color: rgb(188, 42, 141);
+    color: rgb(188, 42, 141);
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 4px #999999;
+}
+
+.ReceiveModal{
+
 }
