@@ -1,5 +1,4 @@
 import React from 'react'
-import ReceiveModal from "./ReceiveModal";
 
 class Request extends React.Component{
 
@@ -17,7 +16,6 @@ class Request extends React.Component{
         return (
             <div className="grid-double-wider">
                 <button id="requestButton" onClick={this.openModal}>Request</button>
-                <ReceiveModal open={this.state.isModalOpen}/>
             </div>
         )
     }
