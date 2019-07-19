@@ -7,7 +7,7 @@ class AccountDisplay extends React.Component{
         return(
             <div className="App-wallet-accountDisplay">
                 <img id="accountImage" src={process.env.PUBLIC_URL + '/favicon.ico'}/>
-                <div id="accountName">0xd9nreoqwei2020dDiqoelqDnq02</div>
+                <div id="accountName">{this.props.address}</div>
             </div>
         )
     }

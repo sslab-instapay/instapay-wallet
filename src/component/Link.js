@@ -1,6 +1,6 @@
 import React from 'react'
 
-class LinkButton extends React.Component{
+class Link extends React.Component{
 
     render() {
         return (
@@ -11,4 +11,4 @@ class LinkButton extends React.Component{
     }
 }
 
-export default LinkButton
+export default Link

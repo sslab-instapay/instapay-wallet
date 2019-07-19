@@ -3,9 +3,10 @@ import Dialog from '@material-ui/core/Dialog';
 import {DialogTitle} from "@material-ui/core";
 import DialogContent from "@material-ui/core/DialogContent";
 import QRCode from 'qrcode.react'
+
 class Receive extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             isModalOpen: false,
@@ -25,7 +26,7 @@ class Receive extends React.Component {
         return (
             <div className="grid-half">
                 <button className="colored-button" id="receiveButton" onClick={this.openModal}>Receive</button>
-                <ReceiveModal open={this.state.isModalOpen}/>
+                <ReceiveModal open={this.state.isModalOpen} closeModal={() => this.closeModal()} address={this.props.address}/>
             </div>
         )
     }
@@ -35,44 +36,34 @@ class ReceiveModal extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
-            open: false
+            open: props.open
         };
     }
 
     render() {
         let qrSize = Math.min(document.documentElement.clientWidth, 512) - 90;
-        let qrValue = "0xqwe23024j2ijtql2ntkq2tn4oq2keo2";
         return (
-            <div>
-                <Dialog open={this.state.open} onClose={this.handleClose}>
-                    <DialogTitle>Receive</DialogTitle>
-                    <DialogContent>
-                        <div className="content qr row" style={{cursor: "pointer"}}>
-                            <QRCode value={qrValue} size={qrSize}/>
-                            <div className="input-group">
-                                <input type="text" className="form-control" style={{color: "#999999"}}
-                                       value="0xqwjeirji23232" disabled/>
-                                <div className="input-group-append">
-                                    <span className="input-group-text"><i style={{color: "#999999"}}
-                                                                          className="fas fa-copy"/></span>
-                                </div>
-                            </div>
+            <Dialog open={this.props.open}>
+                <DialogTitle>Receive
+                </DialogTitle>
+                <DialogContent style={{textAlign: "center"}}>
+                    <div className="content qr row" style={{cursor: "pointer"}}>
+                        <QRCode value={this.props.address} size={qrSize}/>
+                        <div className="input-group">
+                            <input type="text" className="address-input" value={this.props.address} disabled/>
+                            {/*<div className="input-group-append">*/}
+                            {/*        <span className="input-group-text"><i style={{color: "#999999"}}*/}
+                            {/*                                              className="fas fa-copy"/></span>*/}
+                            {/*</div>*/}
                         </div>
-                        <div style={{width: "100%", textAlign: 'center', padding: 20}}>
-                            <a href={"https://blockscout.com/poa/dai/address/transactions"} target="_blank">
-                                View on Blockscout
-                            </a>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-            </div>
+                    </div>
+                    <button onClick={this.props.closeModal} >CLOSE</button>
+                </DialogContent>
+            </Dialog>
         );
     }
-
-    handleClose = () => {
-        this.setState({open: false})
-    };
 
 }
 
