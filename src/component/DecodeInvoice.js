@@ -46,9 +46,9 @@ class DecodeModal extends React.Component {
     }
 
     send = () => {
-        fetch(process.env.REACT_APP_RAIDEN_NODE_ADDRESS + "/api/v1/payments/" + this.props.tokenAddress + "/" + this.state.sendAddress, {
+        fetch(process.env.REACT_APP_RAIDEN_NODE_ADDRESS + "/payments", {
             method: 'POST',
-            body: JSON.stringify({amount: this.state.amount})
+            body: JSON.stringify({amount: this.state.amount, address: this.state.sendAddress})
         }).then(function (response) {
             if (!response.ok){
                 throw Error(response.statusText);

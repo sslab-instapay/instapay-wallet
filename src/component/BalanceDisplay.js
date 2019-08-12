@@ -18,7 +18,7 @@ class BalanceDisplay extends React.Component{
     render() {
         return (
             <div className="balance-display">
-                <img title={this.props.tokenAddress} alt={this.props.tokenAddress} id="coinIcon" src={coinTypesImageUrl[this.props.type]}/>
+                <img id="coinIcon" src={coinTypesImageUrl[this.props.type]}/>
                 <div id="balance">
                     {this.props.balance + " "+ coinTypesPrifix[this.props.type]}
                 </div>

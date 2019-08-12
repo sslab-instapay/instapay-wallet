@@ -27,7 +27,7 @@ class Send extends React.Component {
                 <button className="colored-button" id="sendButton" onClick={this.openModal}>Send</button>
                 <SendModal open={this.state.isModalOpen}
                            closeModal={() => this.closeModal()}
-                           send={() => this.send()} tokenAddress={this.props.tokenAddress}/>
+                           send={() => this.send()} />
             </div>
         )
     }
@@ -47,7 +47,7 @@ class SendModal extends React.Component {
     }
 
     send = () => {
-        fetch(process.env.REACT_APP_RAIDEN_NODE_ADDRESS + "/api/v1/payments/" + this.props.tokenAddress + "/" + this.state.sendAddress, {
+        fetch(process.env.REACT_APP_RAIDEN_NODE_ADDRESS + "/payments", {
             method: 'POST',
             body: JSON.stringify({amount: this.state.amount})
         }).then(function (response) {

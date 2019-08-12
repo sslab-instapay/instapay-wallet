@@ -11,26 +11,25 @@ import DecodeInvoice from "./DecodeInvoice"
 class Wallet extends React.Component{
 
     render() {
-        console.log(this.props.tokenAddress);
         return(
             <div className="wallet">
                 <AccountDisplay address={this.props.address}/>
 
                 <div className="wallet-body">
-                    <BalanceDisplay type="customToken" balance={this.props.balance} tokenAddress={this.props.tokenAddress} />
+                    <BalanceDisplay type="ethereum" balance={this.props.balance} />
                     <hr className="border-line"/>
 
                     <div className="wrapper">
                         <div className="grid-row">
                             <Receive address={this.props.address}/>
-                            <Send tokenAddress={this.props.tokenAddress}/>
+                            <Send/>
                         </div>
                         <div className="grid-row">
-                            <Request address={this.props.address} tokenAddress={this.props.tokenAddress}/>
+                            <Request address={this.props.address}/>
                             <DecodeInvoice/>
                         </div>
                         <div className="grid-row">
-                            <History address={this.props.address} tokenAddress={this.props.tokenAddress}/>
+                            <History address={this.props.address}/>
                         </div>
                     </div>
 

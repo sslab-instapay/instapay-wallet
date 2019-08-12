@@ -27,7 +27,7 @@ class Request extends React.Component{
                                       closeModal={() => this.closeGenerateInvoiceModal()}
                                       amount={this.state.amount}
                                       address={this.props.address}
-                                      tokenAddress={this.props.tokenAddress} />
+                                       />
             </div>
         )
     }
@@ -96,7 +96,6 @@ class GenerateInvoiceModal extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            tokenAddress: "0xdqwertwq",
             address: "0xjiqwjefiq"
         }
     }
@@ -111,7 +110,6 @@ class GenerateInvoiceModal extends React.Component{
             network: 4,
             publicKey: '0xE6987CD613Dfda0995A95b3E6acBAbECecd41376',
             operatorAddress: this.props.address,
-            tokenAddress: this.props.tokenAddress,
             amount: this.state.amount
         });
         var encodedInvoice = Invoice.encodeInvoice(createdInvoice);

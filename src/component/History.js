@@ -82,7 +82,6 @@ class HistoryModal extends React.Component {
     }
 
     _getHistoryData = () => {
-        //process.env.REACT_APP_RAIDEN_NODE_ADDRESS +"/api/v1/payments/"+ this.props.tokenAddress)
         fetch(process.env.REACT_APP_RAIDEN_NODE_ADDRESS + "/api/v1/payments/0x4f50C3bCbAC121D1C1f7E2Eee408e63D0F2fc6cB")
             .then(res => res.json())
             .then((data) => {
