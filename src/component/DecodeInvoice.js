@@ -2,15 +2,26 @@ import React from 'react'
 import Dialog from "@material-ui/core/Dialog";
 import {DialogTitle} from "@material-ui/core";
 import DialogContent from "@material-ui/core/DialogContent";
-import QrReader from 'react-qr-reader'
+import QrReader from "react-qr-reader";
 
-class Send extends React.Component {
+class DecodeInvoice extends React.Component{
 
     constructor(props) {
         super(props);
         this.state = {
             isModalOpen: false,
         };
+    }
+
+    render() {
+        return (
+            <div className="grid-half">
+                <button className="bordered-button" id="shareButton" onClick={this.openModal}>DecodeInvoice</button>
+                <DecodeModal open={this.state.isModalOpen}
+                           closeModal={() => this.closeModal()}
+                           send={() => this.send()}/>
+            </div>
+        );
     }
 
     openModal = () => {
@@ -20,21 +31,9 @@ class Send extends React.Component {
     closeModal = () => {
         this.setState({isModalOpen: false})
     };
-
-    render() {
-        return (
-            <div className="grid-half">
-                <button className="colored-button" id="sendButton" onClick={this.openModal}>Send</button>
-                <SendModal open={this.state.isModalOpen}
-                           closeModal={() => this.closeModal()}
-                           send={() => this.send()} tokenAddress={this.props.tokenAddress}/>
-            </div>
-        )
-    }
-
 }
 
-class SendModal extends React.Component {
+class DecodeModal extends React.Component {
 
     constructor(props) {
         super(props);
@@ -70,8 +69,11 @@ class SendModal extends React.Component {
 
     handleScan = (data) => {
         if (data) {
+            var Invoice = require('.././service/invoice');
+            var decodedInvoice = Invoice.decodeInvoice(data);
             this.setState({
-                result: data
+                amount: decodedInvoice['amount'],
+                sendAddress: decodedInvoice['sendAddress']
             })
         }
     };
@@ -84,10 +86,9 @@ class SendModal extends React.Component {
         return (
             <Dialog open={this.props.open}>
                 <button className="close-button" onClick={this.props.closeModal}>Close</button>
-                <DialogTitle style={{textAlign: "center"}}>Send To Address</DialogTitle>
+                <DialogTitle style={{textAlign: "center"}}>Decode Invoice</DialogTitle>
                 <DialogContent style={{textAlign: "center"}}>
                     <div className="content qr row" style={{cursor: "pointer"}}>
-                        <label htmlFor="amount_input">To Address</label>
                         <QrReader
                             delay={300}
                             onError={this.handleError}
@@ -99,10 +100,9 @@ class SendModal extends React.Component {
                             <input name="sendAddress" type="text" className="address-input" placeholder="0x..."
                                    value={this.state.sendAddress} onChange={this.handleChange}/>
                         </div>
-                        <label htmlFor="amount_input">Send Amount</label>
                         <div className="input-group">
                             <input name="amount" type="number" className="address-input" placeholder="0.00"
-                            onChange={this.handleChange}/>
+                                   onChange={this.handleChange}/>
                         </div>
                     </div>
                     <button id="tokenSendButton" onClick={this.send}>Send</button>
@@ -115,4 +115,4 @@ class SendModal extends React.Component {
 }
 
 
-export default Send
+export default DecodeInvoice

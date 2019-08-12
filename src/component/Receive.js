@@ -46,24 +46,18 @@ class ReceiveModal extends React.Component {
         let qrSize = Math.min(document.documentElement.clientWidth, 512) - 90;
         return (
             <Dialog open={this.props.open}>
-                <DialogTitle>Receive
-                </DialogTitle>
+                <button className="close-button" onClick={this.props.closeModal} >Close</button>
+                <DialogTitle style={{textAlign: "center"}}>Receive</DialogTitle>
                 <DialogContent style={{textAlign: "center"}}>
                     <div className="content qr row" style={{cursor: "pointer"}}>
                         <QRCode value={this.props.address} size={qrSize}/>
-                        <div className="input-group">
-                            <input type="text" className="address-input" value={this.props.address} disabled/>
-                            {/*<div className="input-group-append">*/}
-                            {/*        <span className="input-group-text"><i style={{color: "#999999"}}*/}
-                            {/*                                              className="fas fa-copy"/></span>*/}
-                            {/*</div>*/}
-                        </div>
+                        <input type="text" style={{width: qrSize}} className="address-input" value={this.props.address} disabled/>
                     </div>
-                    <button onClick={this.props.closeModal} >CLOSE</button>
                 </DialogContent>
             </Dialog>
         );
     }
+
 
 }
 
