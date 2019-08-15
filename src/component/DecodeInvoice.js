@@ -46,7 +46,7 @@ class DecodeModal extends React.Component {
     }
 
     send = () => {
-        fetch(process.env.REACT_APP_RAIDEN_NODE_ADDRESS + "/payments", {
+        fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/channels/request/payAddr", {
             method: 'POST',
             body: JSON.stringify({amount: this.state.amount, address: this.state.sendAddress})
         }).then(function (response) {

@@ -82,7 +82,7 @@ class HistoryModal extends React.Component {
     }
 
     _getHistoryData = () => {
-        fetch(process.env.REACT_APP_RAIDEN_NODE_ADDRESS + "/api/v1/payments/0x4f50C3bCbAC121D1C1f7E2Eee408e63D0F2fc6cB")
+        fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/histories")
             .then(res => res.json())
             .then((data) => {
                 this.setState({

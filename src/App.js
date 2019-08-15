@@ -40,8 +40,8 @@ class App extends React.Component {
 
     _getWalletInformation = () => {
         const urls = [
-            process.env.REACT_APP_INSTA_NODE_ADDRESS + '/balances',
-            process.env.REACT_APP_INSTA_NODE_ADDRESS + '/address'
+            process.env.REACT_APP_INSTA_NODE_ADDRESS + '/accounts/balances',
+            process.env.REACT_APP_INSTA_NODE_ADDRESS + '/accounts'
         ];
 
 
