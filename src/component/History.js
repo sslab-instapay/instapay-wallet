@@ -72,6 +72,7 @@ class HistoryModal extends React.Component {
     }
 
     _renderHistory() {
+
         const histories = this.state.histories.map((history, index) => {
             return (
                 <HistoryItem key={index} event={history.event} target={history.target} amount={history.amount}/>
@@ -82,9 +83,10 @@ class HistoryModal extends React.Component {
     }
 
     _getHistoryData = () => {
-        fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/histories")
+        fetch(process.env.REACT_APP_INSTA_OPERATOR_SERVER_ADDRESS + "/payment")
             .then(res => res.json())
             .then((data) => {
+                // TODO 셋업 히스토리 자신의 어카운트의 관련된 것들만 가져오게.
                 this.setState({
                         histories: data
                     }

@@ -3,6 +3,7 @@ import './App.css';
 import Wallet from './component/Wallet.js';
 
 const balance = 50000;
+
 class App extends React.Component {
 
     constructor(props) {
@@ -39,20 +40,14 @@ class App extends React.Component {
     };
 
     _getWalletInformation = () => {
-        const urls = [
-            process.env.REACT_APP_INSTA_NODE_ADDRESS + '/accounts/balances',
-            process.env.REACT_APP_INSTA_NODE_ADDRESS + '/accounts'
-        ];
+        const url = process.env.REACT_APP_INSTA_NODE_ADDRESS + 'account/list';
 
-
-        Promise.all([
-            fetch(urls[0], urls[1]),
-        ])
-            .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-            .then(([data1, data2]) => {
+        fetch(url)
+            .then(res1 => res1.json())
+            .then(data => {
                 this.setState({
-                        balance: data1,
-                        address: data2
+                        address: data.address,
+                        balance: data.balance
                     }
                 );
             })

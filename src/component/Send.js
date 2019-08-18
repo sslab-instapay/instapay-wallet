@@ -47,9 +47,9 @@ class SendModal extends React.Component {
     }
 
     send = () => {
-        fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/channels/request/payAddr", {
+        fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/channel/request/server", {
             method: 'POST',
-            body: JSON.stringify({amount: this.state.amount})
+            body: JSON.stringify({addr: this.state.sendAddress, amount: this.state.amount})
         }).then(function (response) {
             if (!response.ok){
                 throw Error(response.statusText);
