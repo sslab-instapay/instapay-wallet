@@ -9,9 +9,6 @@ exports.deriveNonce = function (invoice) {
 };
 
 exports.createInvoice = function (params) {
-    if (!params.tokenAddress && !params.contractAddress) {
-        throw new Error('Either tokenAddress or contractAddress should be non-null');
-    }
     if (params.generateId && !params.amount) {
         throw new Error('Invoices with id should contain amount property');
     }
@@ -84,4 +81,4 @@ var decompressAmount = function (amount) {
         : amount.substring(0, caretPosition) +
         '0'.repeat(Number.parseInt(amount.substring(caretPosition + 1)));
 };
-var INVOICE_PREFIX = 'RN';
+var INVOICE_PREFIX = 'INSTA';

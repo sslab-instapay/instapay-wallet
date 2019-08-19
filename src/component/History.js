@@ -75,7 +75,7 @@ class HistoryModal extends React.Component {
 
         const histories = this.state.histories.map((history, index) => {
             return (
-                <HistoryItem key={index} event={history.event} target={history.target} amount={history.amount}/>
+                <HistoryItem key={index} sendAddress={history.sendAddress} receiveAddress={history.receiveAddress} amount={history.amount}/>
             )
 
         });
@@ -86,7 +86,6 @@ class HistoryModal extends React.Component {
         fetch(process.env.REACT_APP_INSTA_OPERATOR_SERVER_ADDRESS + "/payment")
             .then(res => res.json())
             .then((data) => {
-                // TODO 셋업 히스토리 자신의 어카운트의 관련된 것들만 가져오게.
                 this.setState({
                         histories: data
                     }
@@ -104,27 +103,15 @@ class HistoryItem extends React.Component {
     }
 
     render() {
-        console.log(this.props.event);
+        console.log(this.props.sendAddress);
 
         return (
             <tr>
-                <td><span className='history-item-event'>{this._convertEventString(this.props.event)}</span></td>
-                <td><span className='history-item-target'>{this._cutEthereumAddress(this.props.target)}</span></td>
+                <td><span className='history-item-event'>{this._cutEthereumAddress(this.props.sendAddress)}</span></td>
+                <td><span className='history-item-target'>{this._cutEthereumAddress(this.props.receiveAddress)}</span></td>
                 <td><span className='history-item-amount'>{this.props.amount}</span></td>
             </tr>
         )
-    }
-
-    _convertEventString(eventString) {
-        console.log(eventString);
-        switch (eventString) {
-            case 'EventPaymentReceivedSuccess':
-                return 'Receive';
-            case 'EventPaymentSentSuccess':
-                return 'Send';
-            default:
-                return '';
-        }
     }
 
     _cutEthereumAddress(address) {
