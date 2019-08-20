@@ -10,8 +10,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // address: process.env.REACT_APP_TEST_ADDRESS,
-            address: TEST_ADDRESS,
+            address: process.env.REACT_APP_TEST_ADDRESS,
+            // address: TEST_ADDRESS || ,
             balance: balance
         };
 

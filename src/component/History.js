@@ -17,7 +17,7 @@ class History extends React.Component {
         return (
             <div className="grid-double-wider">
                 <button onClick={this.openModal} className="bordered-button" id="historyButton">History</button>
-                <HistoryModal open={this.state.isModalOpen}
+                <HistoryModal address={this.props.address} open={this.state.isModalOpen}
                               closeModal={() => this.closeModal()}
                               send={() => this.send()}/>
             </div>
@@ -72,12 +72,15 @@ class HistoryModal extends React.Component {
     }
 
     _renderHistory() {
-
+        console.log(this.state.histories);
         const histories = this.state.histories.map((history, index) => {
-            return (
-                <HistoryItem key={index} sendAddress={history.sendAddress} receiveAddress={history.receiveAddress} amount={history.amount}/>
-            )
-
+            if (this.props.address === history.senderAddress || this.props.address === history.receiverAddress) {
+                return (
+                    <HistoryItem key={index} senderAddress={history.senderAddress} receiverAddress={history.receiverAddress} amount={history.amount}/>
+                )
+            }else{
+                return null;
+            }
         });
         return histories;
     }
@@ -86,6 +89,7 @@ class HistoryModal extends React.Component {
         fetch(process.env.REACT_APP_INSTA_OPERATOR_SERVER_ADDRESS + "/payment")
             .then(res => res.json())
             .then((data) => {
+                console.log(data);
                 this.setState({
                         histories: data
                     }
@@ -103,12 +107,11 @@ class HistoryItem extends React.Component {
     }
 
     render() {
-        console.log(this.props.sendAddress);
 
         return (
             <tr>
-                <td><span className='history-item-event'>{this._cutEthereumAddress(this.props.sendAddress)}</span></td>
-                <td><span className='history-item-target'>{this._cutEthereumAddress(this.props.receiveAddress)}</span></td>
+                <td><span className='history-item-event'>{this._cutEthereumAddress(this.props.senderAddress)}</span></td>
+                <td><span className='history-item-target'>{this._cutEthereumAddress(this.props.receiverAddress)}</span></td>
                 <td><span className='history-item-amount'>{this.props.amount}</span></td>
             </tr>
         )
