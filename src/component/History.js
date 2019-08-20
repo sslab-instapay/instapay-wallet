@@ -57,8 +57,8 @@ class HistoryModal extends React.Component {
                     <table id='historyTable'>
                         <thead>
                         <tr>
-                            <th className='history-table-head'>Event</th>
-                            <th className='history-table-head'>Target</th>
+                            <th className='history-table-head'>SenderAddr</th>
+                            <th className='history-table-head'>ReceiverAddr</th>
                             <th className='history-table-head'>Amount</th>
                         </tr>
                         </thead>
