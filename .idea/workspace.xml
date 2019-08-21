@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1459d6c-3679-4faf-8a18-36c296ac29ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/History.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/History.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/History.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="61" column="65" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="65" />
+            <state relative-caret-position="137">
+              <caret line="51" column="16" lean-forward="true" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -69,9 +68,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.css">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="130" column="28" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -107,7 +110,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/BalanceDisplay.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="146">
               <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
             </state>
           </provider>
@@ -171,7 +174,6 @@
         <option value="$PROJECT_DIR$/src/component/ReceiveButton.js" />
         <option value="$PROJECT_DIR$/src/component/ReceiveModal.js" />
         <option value="$PROJECT_DIR$/src/component/Receive.js" />
-        <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/component/AccountDisplay.js" />
         <option value="$PROJECT_DIR$/src/component/Link.js" />
         <option value="$PROJECT_DIR$/src/component/Share.js" />
@@ -186,6 +188,7 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/component/History.js" />
+        <option value="$PROJECT_DIR$/src/App.css" />
       </list>
     </option>
   </component>
@@ -307,12 +310,12 @@
       <workItem from="1566213294646" duration="339000" />
       <workItem from="1566224875217" duration="447000" />
       <workItem from="1566266584495" duration="435000" />
-      <workItem from="1566289353687" duration="1513000" />
+      <workItem from="1566289353687" duration="3162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45421000" />
+    <option name="totallyTimeSpent" value="47070000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -436,9 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -453,13 +453,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/BalanceDisplay.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/AccountDisplay.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -467,10 +460,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/History.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="51" column="16" lean-forward="true" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/Wallet.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/BalanceDisplay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -484,13 +494,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/History.js">
+    <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="61" column="65" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="334">
+          <caret line="130" column="28" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
         </state>
       </provider>
     </entry>
