@@ -75,7 +75,7 @@ class SendModal extends React.Component {
     handleScan = (data) => {
         if (data) {
             this.setState({
-                result: data
+                sendAddress: data
             })
         }
     };

@@ -3,14 +3,14 @@ import './App.css';
 import Wallet from './component/Wallet.js';
 
 const balance = 50000;
-const TEST_ADDRESS= "0x000999";
+
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            address: process.env.REACT_APP_TEST_ADDRESS,
+            address: '',
             // address: TEST_ADDRESS || ,
             balance: balance
         };
