@@ -4,14 +4,15 @@ import Wallet from './component/Wallet.js';
 
 const balance = 50000;
 
+let TEST_ADDRESS = "0x1234214"
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            address: '',
-            // address: TEST_ADDRESS || ,
+            // address: '',
+            address: TEST_ADDRESS,
             balance: balance
         };
 

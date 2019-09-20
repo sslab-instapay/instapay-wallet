@@ -107,9 +107,7 @@ class GenerateInvoiceModal extends React.Component{
         this.setState({amount: nextProps.amount});
         var Invoice = require('.././service/invoice');
         var createdInvoice = Invoice.createInvoice({
-            network: 4,
             publicKey: '0xE6987CD613Dfda0995A95b3E6acBAbECecd41376',
-            operatorAddress: this.props.address,
             amount: this.state.amount
         });
         var encodedInvoice = Invoice.encodeInvoice(createdInvoice);
