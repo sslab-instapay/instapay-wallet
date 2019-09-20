@@ -4,7 +4,7 @@ import Wallet from './component/Wallet.js';
 
 const balance = 50000;
 
-let TEST_ADDRESS = "0x1234214"
+let TEST_ADDRESS = "0x1234214";
 
 class App extends React.Component {
 

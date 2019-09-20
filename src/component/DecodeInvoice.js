@@ -61,6 +61,21 @@ class DecodeModal extends React.Component {
         this.props.closeModal()
     };
 
+    handleInvoiceChange = (e) => {
+        console.log(e.target.value);
+        var data = e.target.value;
+        if(data.length > 15){
+            var Invoice = require('.././service/invoice');
+
+            var decodedInvoice = Invoice.decodeInvoice(data);
+            console.log(decodedInvoice);
+            this.setState({
+                amount: parseInt(decodedInvoice['amount']),
+                sendAddress: decodedInvoice['publicKey']
+            })
+        }
+    };
+
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -96,6 +111,10 @@ class DecodeModal extends React.Component {
                             style={{ width: '100%' }}
                         />
                         <p>{this.state.result}</p>
+                        <div className="input-group">
+                            <input name="invoice" type="text" className="address-input" placeholder="INSTA..."
+                                   onChange={this.handleInvoiceChange}/>
+                        </div>
                         <div className="input-group">
                             <input name="sendAddress" type="text" className="address-input" placeholder="0x..."
                                    value={this.state.sendAddress} onChange={this.handleChange}/>
