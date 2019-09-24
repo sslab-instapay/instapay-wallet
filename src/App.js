@@ -4,22 +4,21 @@ import Wallet from './component/Wallet.js';
 
 const balance = 50000;
 
-let TEST_ADDRESS = "0x1234214";
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            // address: '',
-            address: TEST_ADDRESS,
+            address: '',
+            //address: TEST_ADDRESS,
             balance: balance
         };
 
     }
 
     componentDidMount() {
-        this._getWalletInformation();
+        this.getWalletInformation();
     }
 
     render() {
@@ -39,11 +38,10 @@ class App extends React.Component {
     }
 
     _renderWallet = () => {
-        return <Wallet address={this.state.address} balance={this.state.balance}/>
+        return <Wallet address={this.state.address} balance={this.state.balance} reloadWallet={() => this.getWalletInformation()} />
     };
 
-    _getWalletInformation = () => {
-        console.log(process.env.REACT_APP_INSTA_NODE_ADDRESS);
+    getWalletInformation = () => {
         const url = process.env.REACT_APP_INSTA_NODE_ADDRESS + '/account/list';
 
         fetch(url)

@@ -68,9 +68,9 @@ class DecodeModal extends React.Component {
             var Invoice = require('.././service/invoice');
 
             var decodedInvoice = Invoice.decodeInvoice(data);
-            console.log(decodedInvoice);
+            console.log(decodedInvoice['amount']);
             this.setState({
-                amount: parseInt(decodedInvoice['amount']),
+                amount: decodedInvoice['amount'],
                 sendAddress: decodedInvoice['publicKey']
             })
         }
@@ -121,7 +121,7 @@ class DecodeModal extends React.Component {
                         </div>
                         <div className="input-group">
                             <input name="amount" type="number" className="address-input" placeholder="0.00"
-                                   onChange={this.handleChange}/>
+                                   value={this.state.amount} onChange={this.handleChange}/>
                         </div>
                     </div>
                     <button id="tokenSendButton" onClick={this.send}>Send</button>

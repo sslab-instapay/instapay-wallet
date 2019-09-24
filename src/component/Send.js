@@ -27,7 +27,9 @@ class Send extends React.Component {
                 <button className="colored-button" id="sendButton" onClick={this.openModal}>Send</button>
                 <SendModal open={this.state.isModalOpen}
                            closeModal={() => this.closeModal()}
-                           send={() => this.send()} />
+                           send={() => this.send()}
+                           reloadWallet={this.props.reloadWallet}
+                />
             </div>
         )
     }
@@ -47,7 +49,7 @@ class SendModal extends React.Component {
     }
 
     send = () => {
-        fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/channel/request/server", {
+        fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/channels/requests/server", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -55,13 +57,14 @@ class SendModal extends React.Component {
             },
             body: JSON.stringify({addr: this.state.sendAddress, amount: Number(this.state.amount)})
         }).then(function (response) {
-            if (!response.ok){
+            if (!response.ok) {
                 throw Error(response.statusText);
-            }else{
-                return response.json()
+            } else {
+                return response.json();
             }
         }).then((data) => {
-            alert('payment success to ' + this.state.sendAddress + ' amount : ' + this.state.amount)
+            alert('payment success to ' + this.state.sendAddress + ' amount : ' + this.state.amount);
+            this.props.reloadWallet();
         }).catch(err => console.log(err));
         this.props.closeModal()
     };
@@ -96,7 +99,7 @@ class SendModal extends React.Component {
                             delay={300}
                             onError={this.handleError}
                             onScan={this.handleScan}
-                            style={{ width: '100%' }}
+                            style={{width: '100%'}}
                         />
                         <p>{this.state.result}</p>
                         <div className="input-group">
@@ -106,7 +109,7 @@ class SendModal extends React.Component {
                         <label htmlFor="amount_input">Send Amount</label>
                         <div className="input-group">
                             <input name="amount" type="number" className="address-input" placeholder="0.00"
-                            onChange={this.handleChange}/>
+                                   onChange={this.handleChange}/>
                         </div>
                     </div>
                     <button id="tokenSendButton" onClick={this.send}>Send</button>

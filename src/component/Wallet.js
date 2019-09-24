@@ -22,7 +22,7 @@ class Wallet extends React.Component{
                     <div className="wrapper">
                         <div className="grid-row">
                             <Receive address={this.props.address}/>
-                            <Send/>
+                            <Send reloadWallet={this.props.reloadWallet}/>
                         </div>
                         <div className="grid-row">
                             <Request address={this.props.address}/>
