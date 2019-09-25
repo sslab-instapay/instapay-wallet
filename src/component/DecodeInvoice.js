@@ -62,7 +62,7 @@ class DecodeModal extends React.Component {
                 return response.json()
             }
         }).then((data) => {
-            alert('payment success to ' + data['target_address'] + ' amount : ' + data['amount']);
+            alert('payment success to ' + data['sendAddress'] + ' amount : ' + data['amount']);
             this.props.reloadWallet();
         }).catch(err => console.log(err));
         this.props.closeModal()

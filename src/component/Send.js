@@ -49,13 +49,14 @@ class SendModal extends React.Component {
     }
 
     send = () => {
+        var sendAddress = document.getElementById("sendAddress").value;
+        var amount = document.getElementById("amount").value;
+        let formData = new FormData();
+        formData.append('amount', amount);
+        formData.append('addr', sendAddress);
         fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/channels/requests/server", {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({addr: this.state.sendAddress, amount: Number(this.state.amount)})
+            body: formData
         }).then(function (response) {
             if (!response.ok) {
                 throw Error(response.statusText);
