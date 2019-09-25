@@ -26,7 +26,7 @@ class Wallet extends React.Component{
                         </div>
                         <div className="grid-row">
                             <Request address={this.props.address}/>
-                            <DecodeInvoice/>
+                            <DecodeInvoice reloadWallet={this.props.reloadWallet}/>
                         </div>
                         <div className="grid-row">
                             <History address={this.props.address}/>

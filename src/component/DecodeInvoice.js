@@ -16,10 +16,11 @@ class DecodeInvoice extends React.Component{
     render() {
         return (
             <div className="grid-half">
-                <button className="bordered-button" id="shareButton" onClick={this.openModal}>DecodeInvoice</button>
+                <button className="bordered-button" id="shareButton" onClick={this.openModal}>Send via invoice</button>
                 <DecodeModal open={this.state.isModalOpen}
                            closeModal={() => this.closeModal()}
-                           send={() => this.send()}/>
+                           send={() => this.send()}
+                           reloadWallet={this.props.reloadWallet}/>
             </div>
         );
     }
@@ -46,9 +47,9 @@ class DecodeModal extends React.Component {
     }
 
     send = () => {
-        fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/channels/request/payAddr", {
+        fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/channels/requests/server", {
             method: 'POST',
-            body: JSON.stringify({amount: this.state.amount, address: this.state.sendAddress})
+            body: JSON.stringify({amount: this.state.amount, addr: this.state.sendAddress})
         }).then(function (response) {
             if (!response.ok){
                 throw Error(response.statusText);
@@ -57,6 +58,7 @@ class DecodeModal extends React.Component {
             }
         }).then((data) => {
             alert('payment success to ' + data['target_address'] + ' amount : ' + data['amount'])
+            this.props.reloadWallet();
         }).catch(err => console.log(err));
         this.props.closeModal()
     };
@@ -101,7 +103,7 @@ class DecodeModal extends React.Component {
         return (
             <Dialog open={this.props.open}>
                 <button className="close-button" onClick={this.props.closeModal}>Close</button>
-                <DialogTitle style={{textAlign: "center"}}>Decode Invoice</DialogTitle>
+                <DialogTitle style={{textAlign: "center"}}>Send via invoice</DialogTitle>
                 <DialogContent style={{textAlign: "center"}}>
                     <div className="content qr row" style={{cursor: "pointer"}}>
                         <QrReader
