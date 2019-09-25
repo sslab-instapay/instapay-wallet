@@ -38,7 +38,6 @@ class DecodeModal extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             open: props.open,
             sendAddress: '',
@@ -47,9 +46,15 @@ class DecodeModal extends React.Component {
     }
 
     send = () => {
+        var sendAddress = document.getElementById("sendAddress").value;
+        var amount = document.getElementById("amount").value;
+        let formData = new FormData();
+        formData.append('amount', amount);
+        formData.append('addr', sendAddress);
+
         fetch(process.env.REACT_APP_INSTA_NODE_ADDRESS + "/channels/requests/server", {
             method: 'POST',
-            body: JSON.stringify({amount: this.state.amount, addr: this.state.sendAddress})
+            body: formData
         }).then(function (response) {
             if (!response.ok){
                 throw Error(response.statusText);
@@ -57,7 +62,7 @@ class DecodeModal extends React.Component {
                 return response.json()
             }
         }).then((data) => {
-            alert('payment success to ' + data['target_address'] + ' amount : ' + data['amount'])
+            alert('payment success to ' + data['target_address'] + ' amount : ' + data['amount']);
             this.props.reloadWallet();
         }).catch(err => console.log(err));
         this.props.closeModal()
@@ -70,11 +75,12 @@ class DecodeModal extends React.Component {
             var Invoice = require('.././service/invoice');
 
             var decodedInvoice = Invoice.decodeInvoice(data);
-            console.log(decodedInvoice['amount']);
             this.setState({
                 amount: decodedInvoice['amount'],
                 sendAddress: decodedInvoice['publicKey']
-            })
+            });
+            console.log("--END--");
+            console.log(this.state.amount);
         }
     };
 
@@ -118,11 +124,11 @@ class DecodeModal extends React.Component {
                                    onChange={this.handleInvoiceChange}/>
                         </div>
                         <div className="input-group">
-                            <input name="sendAddress" type="text" className="address-input" placeholder="0x..."
+                            <input id="sendAddress" name="sendAddress" type="text" className="address-input" placeholder="0x..."
                                    value={this.state.sendAddress} onChange={this.handleChange}/>
                         </div>
                         <div className="input-group">
-                            <input name="amount" type="number" className="address-input" placeholder="0.00"
+                            <input id="amount" name="amount" type="number" className="address-input" placeholder="0.00"
                                    value={this.state.amount} onChange={this.handleChange}/>
                         </div>
                     </div>
